@@ -62,7 +62,7 @@ def main():
     print_menu()
     
     while True:
-        choice = input(Fore.GREEN + "Enter a process number: " + Fore.RESET)
+        choice = input(Fore.BLUE + "Enter a process number: " + Fore.RESET)
         
         if choice == "10":
             print(Fore.RED + "Exiting The Program..." + Fore.RESET)
