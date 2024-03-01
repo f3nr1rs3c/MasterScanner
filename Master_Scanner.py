@@ -1,9 +1,6 @@
-#!/usr/bin/env python
-
 import os
 from colorama import init, Fore
 from pyfiglet import Figlet
-
 
 # Initialize Colorama
 init()
@@ -18,7 +15,7 @@ def print_banner():
 
 def print_menu():
     print("""
-          
+                   
 1) Speed Scanning
 2) Service and Version Info Scanning
 3) Operating System Scanning
@@ -65,13 +62,13 @@ def main():
     print_menu()
     
     while True:
-        choice = input("Enter a process number: ")
+        choice = input(Fore.GREEN + "Enter a process number: " + Fore.RESET)
         
         if choice == "10":
-            print("Exiting The Program...")
+            print(Fore.RED + "Exiting The Program..." + Fore.RESET)
             break
         
-        target_ip = input("Enter Target IP: ")
+        target_ip = input(Fore.GREEN + "Enter Target IP: " + Fore.RESET)
         
         if choice == "1":
             speed_scanning(target_ip)
@@ -93,6 +90,6 @@ def main():
             ftp_scanning(target_ip)
         else:
             print("Invalid input! Please try again.")
-    
+
 if __name__ == "__main__":
     main()
