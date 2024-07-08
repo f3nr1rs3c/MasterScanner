@@ -10,8 +10,8 @@ def clear_screen():
     os.system("clear")
 
 def print_banner():
-    f = Figlet(font='slant')
-    print(Fore.RED + f.renderText('Master Scanner') + Fore.RESET)
+    figlet = Figlet(font='slant')
+    print(Fore.RED + figlet.renderText('Master Scanner') + Fore.RESET)
     print(Fore.RED + "             | - | Made By : F3NR1R - Cyber Security | - |         " + Fore.RESET)
 
 def print_menu():
@@ -27,6 +27,7 @@ def print_menu():
 {0}8){2} Vulnerability Scanning - SQL Injection
 {0}9){2} Vulnerability Scanning - XSS Injection
 {0}10){2} Firewall Bypass
+{0}11){2} Script Scanning
 {0}X) Exit Program
 
     """.format(Fore.RED, "0", Fore.RESET, "1", "2", "3", "4", "5", "6", "7", "8", "9", Fore.RESET))
@@ -62,6 +63,9 @@ def xss_scanning(target_ip):
 
 def firewall_bypass(target_ip):
     os.system("nmap -sF -p1-100 -T4 " + target_ip)
+
+def script_scanning(target_ip):
+    os.system("nmap -sC " + target_ip)
     
 def main():
     clear_screen()
@@ -107,6 +111,9 @@ def main():
         
         elif choice == "10":
             firewall_bypass(target_ip)
+        
+        elif choice == "11":
+            script_scanning(target_ip)
         
         else:
             print("Invalid input! Please try again.")
