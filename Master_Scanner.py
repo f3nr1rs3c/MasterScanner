@@ -28,11 +28,13 @@ def print_menu():
 {0}9){2} Vulnerability Scanning - XSS Injection
 {0}10){2} Firewall Bypass
 {0}11){2} Script Scanning
+{0}12){2} Anonymous FTP Login Scanning
+{0}13){2} Mysql Scanning
+{0}14){2} VMware Version Scanning
+{0}15){2} Fake Mac Scanning
 {0}X) Exit Program
 
-    """.format(Fore.RED, "0", Fore.RESET, "1", "2", "3", "4", "5", "6", "7", "8", "9", Fore.RESET))
-
-# nmap -f <ip> => standart paketleri küçük boyutlara bölüyor. Güvenlik Duvarının bizi algılamasını zorlaştırıyor.
+    """.format(Fore.RED, "0", Fore.RESET, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", Fore.RESET))
 
 def speed_scanning(target_ip):
     os.system("nmap " + target_ip)
@@ -66,7 +68,19 @@ def firewall_bypass(target_ip):
 
 def script_scanning(target_ip):
     os.system("nmap -sC " + target_ip)
-    
+
+def anonymous_ftp_scanning(target_ip):
+    os.system("nmap -p 21 --script=ftp-anon -PN -n ")
+
+def mysql_scanning(target_ip):
+    os.system("nmap -p 445 --script ms-sql-info")
+
+def vmware_scanning(target_ip):
+    os.system("nmap --script vmware-version -p443")
+
+def fake_mac_scanning(target_ip):
+    os.system("nmap -V -sT -PN --spoof-mac 0")
+
 def main():
     clear_screen()
     print_banner()
@@ -114,6 +128,18 @@ def main():
         
         elif choice == "11":
             script_scanning(target_ip)
+        
+        elif choice == "12":
+            anonymous_ftp_scanning(target_ip)
+        
+        elif choice == "13":
+            mysql_scanning(target_ip)
+        
+        elif choice == "14":
+            vmware_scanning(target_ip)
+        
+        elif choice == "15":
+            fake_mac_scanning(target_ip)
         
         else:
             print("Invalid input! Please try again.")
