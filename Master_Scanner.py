@@ -12,7 +12,7 @@ def clear_screen():
 def print_banner():
     figlet = Figlet(font='slant')
     print(Fore.RED + figlet.renderText('Master Scanner') + Fore.RESET)
-    print(Fore.RED + "             | - | Made By : F3NR1R - Cyber Security | - |         " + Fore.RESET)
+    print(Fore.RED + "           | - | Made By : Fenrir - Cyber Security Specialist | - |         " + Fore.RESET)
 
 def print_menu():
     print("""
@@ -32,6 +32,7 @@ def print_menu():
 {0}13){2} Mysql Scanning
 {0}14){2} VMware Version Scanning
 {0}15){2} Fake Mac Scanning
+{0}16){2} Filtered Port Scanning
 {0}X) Exit Program
 
     """.format(Fore.RED, "0", Fore.RESET, "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14", "15", Fore.RESET))
@@ -80,6 +81,9 @@ def vmware_scanning(target_ip):
 
 def fake_mac_scanning(target_ip):
     os.system("nmap -V -sT -PN --spoof-mac 0")
+
+def filtred_scanning(target_ip):
+    os.system("nmap -Pn " + target_ip)
 
 def main():
     clear_screen()
@@ -140,6 +144,9 @@ def main():
         
         elif choice == "15":
             fake_mac_scanning(target_ip)
+        
+        elif choice == "16":
+            filtred_scanning(target_ip)
         
         else:
             print("Invalid input! Please try again.")
