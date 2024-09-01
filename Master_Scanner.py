@@ -40,7 +40,7 @@ def print_menu():
     """.format(Fore.RED, "0", Fore.RESET))
 
 def speed_scanning(target_ip, report_file): # Sistem üzerinde hızlı tarama yapmaya olanak sağlıyor.
-    os.system(f"nmap -oN {report_file} " + target_ip)
+    os.system(f"nmap -oN {report_file} -F " + target_ip)
 
 def multi_scanning(target_ip, report_file): # Sistem üzerinde çoklu IP kullanarak anonim bir tarama gerçekleştiriyor
     os.system(f"nmap -oN {report_file} -D RND:10 " + target_ip)
