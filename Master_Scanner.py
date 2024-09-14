@@ -23,7 +23,7 @@ def print_menu():
 {0}4){2} Operating System Scanning
 {0}5){2} Firewall Scanning
 {0}6){2} TCP and UDP Scanning
-{0}7){2} ARP Scanning - (192.168.1.0/24)
+{0}7){2} Vulnerability Scanning - All Vulnerability
 {0}8){2} Vulnerability Scanning - SQL Injection
 {0}9){2} Vulnerability Scanning - XSS Injection
 {0}10){2} Firewall Bypass
@@ -57,8 +57,8 @@ def firewall_scanning(target_ip, report_file): # Sistem içerisinde ki güvenlik
 def tcp_udp_scanning(target_ip, report_file): # TCP paketleri ve UDP paketleri göndererek gerçekleşen taramadır.
     os.system(f"nmap -oN {report_file} -p T:20-25,80,443 U:53 " + target_ip)
 
-def arp_scanning(target_ip, report_file): # Arp paketleri göndererek yerel ağdaki cihazları tanımlamak için kullanılan bir tarama çeşididir.
-    os.system(f"nmap -oN {report_file} -PR " + target_ip)
+def vulnerability_scanning(target_ip, report_file): # Arp paketleri göndererek yerel ağdaki cihazları tanımlamak için kullanılan bir tarama çeşididir.
+    os.system(f"nmap -oN {report_file} -script -vuln " + target_ip)
 
 def sql_injection_scanning(target_ip, report_file): # Sistemde ki SQL Injection zafiyetleri tespit etmek için kullanılan bir tarama çeşididir.
     os.system(f"nmap -oN {report_file} -p80 --script http-sql-injection " + target_ip)
@@ -130,7 +130,7 @@ def main():
             tcp_udp_scanning(target_ip, report_file)
         
         elif choice == "7":
-            arp_scanning(target_ip, report_file)
+            vulnerability_scanning(target_ip, report_file)
         
         elif choice == "8":
             sql_injection_scanning(target_ip, report_file)
