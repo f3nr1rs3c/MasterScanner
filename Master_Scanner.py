@@ -12,7 +12,7 @@ def clear_screen():
 def print_banner():
     figlet = Figlet(font='slant')
     print(Fore.RED + figlet.renderText('Master Scanner') + Fore.RESET)
-    print(Fore.RED + "           | - | Made By : Fenrir - Cyber Security Specialist | - |         " + Fore.RESET)
+    print(Fore.RED + "           | - | Made By : Fenrir - Penetration Tester | - |         " + Fore.RESET)
 
 def print_menu():
     print("""
